@@ -5,9 +5,10 @@ public class Main : Node2D
 {
     public override void _Ready()
     {
-        AudioStreamPlayer midiPlayer = (AudioStreamPlayer)GD.Load<GDScript>("res://addons/midi/MidiPlayer.gd").New("GodotMidiPlayer");
+        Node midiPlayer = (Node)GD.Load<GDScript>("res://addons/midi/MidiPlayer.gd").New();
         AddChild(midiPlayer);
-        midiPlayer.Call("set_file", new object[] { "Music-133.mid" });
-        midiPlayer.Play();
+        midiPlayer.Set("file", "Music-133.mid");
+        midiPlayer.Set("soundfont", "Aspirin-Stereo.sf2");
+        midiPlayer.Call("play", 0f);
     }
 }
