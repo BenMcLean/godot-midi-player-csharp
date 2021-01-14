@@ -8,7 +8,7 @@ public class Main : Node2D
         Node midiPlayer = (Node)GD.Load<GDScript>("res://addons/midi/MidiPlayer.gd").New();
         AddChild(midiPlayer);
         midiPlayer.Set("file", "Music-133.mid");
-        midiPlayer.Set("soundfont", "Aspirin-Stereo.sf2");
+        midiPlayer.Set("soundfont", "res://1mgm.sf2");
         midiPlayer.Call("play", 0f);
     }
 }
