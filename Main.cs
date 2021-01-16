@@ -9,9 +9,11 @@ public class Main : Node2D
         AddChild(midiPlayer);
         midiPlayer.Set("soundfont", "res://1mgm.sf2");
         //midiPlayer.Set("file", "Music-133.mid");
-        Godot.Object smf = (Godot.Object)GD.Load<GDScript>("res://addons/midi/SMF.gd").New();
-        smf.Call("read_data", System.IO.File.ReadAllBytes("Music-133.mid"));
-        midiPlayer.Set("smf_data", smf);
+        Reference smf = (Reference)GD.Load<GDScript>("res://addons/midi/SMF.gd").New();
+        midiPlayer.Set("smf_data", smf.Call("read_data", System.IO.File.ReadAllBytes("Music-133.mid")));
+        if (midiPlayer.Get("smf_data") == null)
+            GD.Print("it's null");
+        midiPlayer.Set("loop", true);
         midiPlayer.Call("play", 0f);
     }
 }
